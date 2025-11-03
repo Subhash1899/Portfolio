@@ -1,0 +1,1232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Subhash Kumar — Motion Graphic Designer & Video Editor</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --accent: #0066cc;
+      --accent-light: #4d94ff;
+      --accent-dark: #004d99;
+      --accent-glow: rgba(0, 102, 204, 0.15);
+      --muted: #6b7280;
+      --muted-dark: #4b5563;
+      --bg: #f8fafc;
+      --bg-light: #e2e8f0;
+      --card: #ffffff;
+      --card-light: #f1f5f9;
+      --glass: rgba(0, 0, 0, 0.05);
+      --text: #334155;
+      --text-light: #1e293b;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --shadow-glow: 0 0 12px rgba(0, 102, 204, 0.15);
+      --radius: 12px;
+      --radius-sm: 6px;
+      --transition: all 0.3s ease;
+      --transition-slow: all 0.5s ease;
+    }
+
+    /* Dark mode variables */
+    [data-theme="dark"] {
+      --accent: #3b82f6;
+      --accent-light: #60a5fa;
+      --accent-dark: #2563eb;
+      --accent-glow: rgba(59, 130, 246, 0.15);
+      --muted: #94a3b8;
+      --muted-dark: #64748b;
+      --bg: #0f172a;
+      --bg-light: #1e293b;
+      --card: #1e293b;
+      --card-light: #334155;
+      --glass: rgba(255, 255, 255, 0.05);
+      --text: #e2e8f0;
+      --text-light: #f1f5f9;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      --shadow-glow: 0 0 12px rgba(59, 130, 246, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: var(--card);
+      border: 1px solid var(--glass);
+      border-radius: 50%;
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .theme-toggle i {
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 20px;
+    }
+
+    /* Header Section */
+    header {
+      position: relative;
+      padding: 40px 0;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--glass);
+      overflow: hidden;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .avatar-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar-inner {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 4px solid var(--accent);
+      box-shadow: var(--shadow);
+    }
+
+    .avatar-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 50%;
+    }
+
+    .online-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--muted);
+      background: var(--glass);
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--glass);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+    }
+
+    .header-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .name-title {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--text-light);
+      letter-spacing: -0.5px;
+    }
+
+    .title-badge {
+      background: var(--accent);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .title-sub {
+      font-size: 1.3rem;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      min-height: 32px;
+      font-weight: 500;
+    }
+
+    .tagline {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    .header-stats {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 24px;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .stat-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 12px;
+      min-width: 180px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px var(--accent-glow);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card);
+      padding: 28px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 1px solid var(--glass);
+      margin-bottom: 24px;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    /* Typography */
+    h2 {
+      font-size: 1.75rem;
+      margin-bottom: 20px;
+      color: var(--text-light);
+      position: relative;
+      padding-bottom: 10px;
+      display: inline-block;
+      font-weight: 700;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      margin: 20px 0 12px;
+      color: var(--text-light);
+      font-weight: 600;
+    }
+
+    h4 {
+      font-size: 1rem;
+      margin: 16px 0 8px;
+      color: var(--text-light);
+      font-weight: 600;
+    }
+
+    p {
+      margin-bottom: 16px;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .tagline {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* Contact List */
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-list a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: var(--transition);
+      position: relative;
+      display: inline-block;
+      font-weight: 500;
+    }
+
+    .contact-list a:hover {
+      color: var(--accent-dark);
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .skill {
+      margin-bottom: 16px;
+    }
+
+    .skill .label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .progress {
+      height: 8px;
+      border-radius: 999px;
+      background: var(--glass);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress > i {
+      display: block;
+      height: 100%;
+      background: var(--accent);
+      border-radius: 999px;
+      transition: width 1s ease-in-out;
+    }
+
+    /* AI Tools */
+    .ai-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .chip {
+      background: var(--glass);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      color: var(--accent);
+      transition: var(--transition);
+      border: 1px solid var(--accent-glow);
+      font-weight: 500;
+    }
+
+    .chip:hover {
+      background: var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    /* Work Experience */
+    .work-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .work-item {
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      background: var(--glass);
+      transition: var(--transition);
+      border-left: 4px solid transparent;
+    }
+
+    .work-item:hover {
+      border-left-color: var(--accent);
+      transform: translateX(3px);
+    }
+
+    .work-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Expertise Grid */
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .expertise {
+      background: var(--glass);
+      padding: 20px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      border: 1px solid var(--glass);
+    }
+
+    .expertise:hover {
+      background: var(--card-light);
+      transform: translateY(-2px);
+      border-color: var(--accent-glow);
+    }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    .proj {
+      background: var(--glass);
+      padding: 20px;
+      border-radius: var(--radius-sm);
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+
+    .proj:hover {
+      border-color: var(--accent-glow);
+      transform: translateY(-3px);
+    }
+
+    .proj a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .proj a:hover {
+      color: var(--accent-dark);
+    }
+
+    /* Filters */
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: 1px solid var(--glass);
+      padding: 8px 16px;
+      border-radius: 20px;
+      color: var(--muted);
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-glow);
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: var(--glass);
+      margin: 24px 0;
+      border-radius: 2px;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 32px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      padding-top: 24px;
+      border-top: 1px solid var(--glass);
+    }
+
+    /* Navigation for small screens */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--card);
+      padding: 12px;
+      z-index: 1000;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+      border-top: 1px solid var(--glass);
+    }
+
+    .nav-items {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 12px;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-item::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-item.active, .nav-item:hover {
+      color: var(--accent);
+    }
+
+    .nav-item.active::after, .nav-item:hover::after {
+      width: 20px;
+    }
+
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background: var(--accent);
+      color: white;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 999;
+      border: 1px solid var(--glass);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px var(--accent-glow);
+    }
+
+    /* Utility classes */
+    .muted {
+      color: var(--muted);
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .mb-0 {
+      margin-bottom: 0;
+    }
+
+    .mt-0 {
+      margin-top: 0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .expertise-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+      
+      .header-container {
+        gap: 20px;
+      }
+      
+      .avatar-inner {
+        width: 140px;
+        height: 140px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 16px;
+      }
+      
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+      }
+      
+      .name-title {
+        justify-content: center;
+      }
+      
+      .header-stats {
+        justify-content: center;
+      }
+      
+      .header-actions {
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+      }
+      
+      .btn {
+        flex: 1;
+        max-width: 200px;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .projects {
+        grid-template-columns: 1fr;
+      }
+      
+      .work-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .mobile-nav {
+        display: block;
+      }
+      
+      .expertise-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .theme-toggle {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 20px;
+      }
+      
+      .filters {
+        justify-content: center;
+      }
+      
+      .filter-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+      
+      .btn {
+        padding: 10px 16px;
+        font-size: 13px;
+      }
+      
+      .header-stats {
+        gap: 15px;
+      }
+      
+      .stat-number {
+        font-size: 1.2rem;
+      }
+      
+      .header-actions {
+        flex-direction: column;
+      }
+      
+      .btn {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Theme toggle button -->
+  <div class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+  </div>
+
+  <div class="container">
+   <header>
+  <div class="header-container">
+    <div class="avatar-section">
+      <div class="avatar">
+        <div class="avatar-inner">
+          <img src="photo.jpg" alt="Subhash Kumar" />
+        </div>
+      </div>
+      <div class="online-status">
+        <span class="status-dot"></span>
+        Available for work
+      </div>
+    </div>
+    
+    <div class="header-text">
+      <div class="name-title">
+        <h1>Subhash Kumar</h1>
+        <div class="title-badge">Pro Designer</div>
+      </div>
+      <div class="title-sub">
+        Motion Graphic Designer & Video Editor
+      </div>
+      <div class="tagline">Creating visual experiences that captivate and inspire through motion graphics, video editing, and innovative design solutions.</div>
+      
+      <div class="header-stats">
+        <div class="stat">
+          <span class="stat-number">350+</span>
+          <span class="stat-label">Projects</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">3+</span>
+          <span class="stat-label">Years</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Satisfaction</span>
+        </div>
+      </div>
+      
+      <div class="header-actions">
+        <a class="btn btn-primary" href="#">
+          <i class="fas fa-download"></i>
+          Download Resume
+        </a>
+        <a class="btn btn-secondary" href="#contact">
+          <i class="fas fa-envelope"></i>
+          Contact Me
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <div class="hero">
+      <div class="card">
+        <section id="about">
+          <h2>About Me</h2>
+          <p class="tagline">Creative and detail-oriented Graphic Designer with 3+ years of professional experience in apparel design, print media, and digital creatives. Skilled in Adobe Creative Suite with a proven ability to transform concepts into visually appealing designs and motion graphics.</p>
+          <div class="divider"></div>
+
+          <h3>Professional Summary</h3>
+          <p class="muted">Creative designer & motion artist experienced in end-to-end production — from concept to final deliverables. Skilled in leveraging AI-powered tools for design automation, video editing enhancements, and creative content generation to deliver innovative and efficient solutions.</p>
+
+          <div class="divider"></div>
+          <h3>Contact</h3>
+          <div class="contact-list">
+            <div><strong>Email:</strong> <a href="mailto:sk5254915@gmail.com">sk5254915@gmail.com</a></div>
+            <div><strong>Phone:</strong> +91-9872151899</div>
+            <div><strong>Location:</strong> Chandigarh, India</div>
+          </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section id="skills">
+          <h3>Core Skills</h3>
+          <div class="skills-grid">
+            <div>
+              <div class="skill"><div class="label"><span>Adobe Photoshop</span><span>95%</span></div><div class="progress"><i style="width:95%"></i></div></div>
+              <div class="skill"><div class="label"><span>Adobe Illustrator</span><span>90%</span></div><div class="progress"><i style="width:90%"></i></div></div>
+              <div class="skill"><div class="label"><span>Adobe InDesign</span><span>88%</span></div><div class="progress"><i style="width:88%"></i></div></div>
+              <div class="skill"><div class="label"><span>Adobe Premiere Pro</span><span>85%</span></div><div class="progress"><i style="width:85%"></i></div></div>
+            </div>
+            <div>
+              <div class="skill"><div class="label"><span>Adobe After Effects</span><span>80%</span></div><div class="progress"><i style="width:80%"></i></div></div>
+              <div class="skill"><div class="label"><span>Adobe Audition</span><span>75%</span></div><div class="progress"><i style="width:75%"></i></div></div>
+              <div class="skill"><div class="label"><span>CorelDRAW</span><span>85%</span></div><div class="progress"><i style="width:85%"></i></div></div>
+              <div class="skill"><div class="label"><span>Branding & Typography</span><span>82%</span></div><div class="progress"><i style="width:82%"></i></div></div>
+            </div>
+          </div>
+
+          <div style="margin-top:16px">
+            <h4>AI & Generative Tools</h4>
+            <div class="ai-tools" id="aiTools">
+              <span class="chip">Runway ML</span>
+              <span class="chip">Sora AI</span>
+              <span class="chip">ChatGPT</span>
+              <span class="chip">Gemini AI</span>
+              <span class="chip">Kling AI</span>
+              <span class="chip">Hailuo AI</span>
+              <span class="chip">Perplexity AI</span>
+              <span class="chip">Leonardo AI</span>
+              <span class="chip">Eleven Labs</span>
+              <span class="chip">Suno AI</span>
+              <span class="chip">Vizard</span>
+              <span class="chip">Pika Labs</span>
+              <span class="chip">Napkin AI</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <aside class="card">
+        <h3>Quick Info</h3>
+        <div class="muted">Motion Graphic Designer & Video Editor</div>
+        <div style="height:16px"></div>
+        <div class="download">
+          <a class="btn btn-primary" href="#">
+            <i class="fas fa-download"></i>
+            Download Resume
+          </a>
+        </div>
+
+        <div style="height:20px"></div>
+        <h4>Languages</h4>
+        <div class="muted">English · Hindi (Native) · Punjabi</div>
+
+        <div style="height:16px"></div>
+        <h4>Awards</h4>
+        <div class="muted">Star Performance of the Year · Employee of the Month</div>
+
+        <div style="height:16px"></div>
+        <h4>Availability</h4>
+        <div class="muted">Open to freelance projects and full-time opportunities</div>
+      </aside>
+    </div>
+
+    <div class="card">
+      <section id="experience">
+        <h2>Work Experience</h2>
+        <div class="work-list">
+          <div class="work-item">
+            <div class="work-header">
+              <strong>Graphic Designer — Career Infowis IT Solution Private Limited</strong>
+              <span class="meta">Aug 2024 - Present</span>
+            </div>
+            <div class="meta">Produced creative and effective designs for print materials, apparel collections, and website banners. Utilized Adobe Creative Suite to create high-quality print-ready artwork.</div>
+            <div style="margin-top:8px;font-size:14px;color:var(--muted)">Integrated AI tools like Runway ML and MidJourney to streamline design workflows, generate creative assets, and accelerate video production timelines.</div>
+          </div>
+
+          <div class="work-item">
+            <div class="work-header">
+              <strong>Graphic Designer — Affroots Online Pvt Ltd</strong>
+              <span class="meta">May 2024 - Aug 2024</span>
+            </div>
+            <div class="meta">Produced creative designs for T-shirt collections, co-ord sets, and web banners. Prepared print-ready artwork and collaborated with production teams.</div>
+            <div style="margin-top:8px;font-size:14px;color:var(--muted)">Employed AI-assisted image upscaling and generative prompts to explore rapid design variations and iterate quickly.</div>
+          </div>
+
+          <div class="work-item">
+            <div class="work-header">
+              <strong>Graphic Designer & Motion Graphic Designer — GetEldeas</strong>
+              <span class="meta">Jan 2022 - Jan 2024</span>
+            </div>
+            <div class="meta">Delivered 350+ projects including logos, brochures, advertisements, infographics, and social media creatives. Expanded expertise in motion graphics and video editing.</div>
+            <div style="margin-top:8px;font-size:14px;color:var(--muted)">Integrated AI-driven video tooling to automate repetitive editing tasks and speed up motion design iterations.</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <section id="expertise">
+        <h2>Skills & Expertise</h2>
+        <div class="expertise-grid">
+          <div class="expertise"><strong>Leader</strong><div class="muted">Team coordination, project ownership, timely delivery.</div></div>
+          <div class="expertise"><strong>Creativity</strong><div class="muted">Concept ideation, storytelling, brand expression.</div></div>
+          <div class="expertise"><strong>Branding</strong><div class="muted">Logo systems, visual identity, guidelines.</div></div>
+          <div class="expertise"><strong>Digital Design</strong><div class="muted">Web banners, social assets, motion creatives.</div></div>
+          <div class="expertise"><strong>Print Design</strong><div class="muted">Prepress, dielines, print-ready artwork.</div></div>
+          <div class="expertise"><strong>Problem Solving</strong><div class="muted">Client requirements, production constraints, creative pivots.</div></div>
+          <div class="expertise"><strong>Typography</strong><div class="muted">Type pairing, hierarchy, typesetting.</div></div>
+          <div class="expertise"><strong>Communication</strong><div class="muted">Client collaboration and clear handoffs.</div></div>
+          <div class="expertise"><strong>Hardworking</strong><div class="muted">Reliable, deadline-driven execution.</div></div>
+          <div class="expertise"><strong>Passionate</strong><div class="muted">Always learning new tools & trends.</div></div>
+
+          <!-- AI-specific expertise -->
+          <div class="expertise"><strong>AI-Assisted Design</strong><div class="muted">Use generative models to prototype concepts and produce high-quality visuals faster.</div></div>
+          <div class="expertise"><strong>AI-Powered Video Editing</strong><div class="muted">Leverage AI to automate cuts, color grading suggestions, and speed up timeline edits.</div></div>
+          <div class="expertise"><strong>Generative AI for Visuals</strong><div class="muted">Create rapid variations and novel assets using text-to-image and style-transfer tools.</div></div>
+          <div class="expertise"><strong>Creative Automation with AI Tools</strong><div class="muted">Streamline repetitive tasks with scripts, prompt chains, and model-assisted presets.</div></div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <section id="projects">
+  <h2>Projects & Portfolio</h2>
+  <div class="filters" role="tablist" aria-label="project filters">
+    <button class="filter-btn active" data-filter="all">All Work</button>
+    <button class="filter-btn" data-filter="video">Edited Videos</button>
+    <button class="filter-btn" data-filter="logo">Logo Designs</button>
+    <button class="filter-btn" data-filter="banners">Banners</button>
+    <button class="filter-btn" data-filter="apparel">Apparel</button>
+  </div>
+
+ <div class="projects" id="projectsGrid">
+  <div class="proj" data-category="video">
+    <div>
+      <i class="fas fa-video"></i> 
+      <strong>Brand Promo Video</strong>
+      <div class="muted">Promo | Premiere Pro · After Effects</div>
+    </div>
+    <div>
+      <a  class="muted" href="https://drive.google.com/drive/folders/1yCp5Mi3CZeFgs8J87RWEc-oG-TPBdUUp" target="_blank">
+       View on Google Drive
+      </a>
+    </div>
+  </div>
+
+  <div class="proj" data-category="logo">
+    <div>
+      <i class="fas fa-pen-nib"></i>
+      <strong>Logo Collection</strong>
+      <div class="muted">Multiple industries</div>
+    </div>
+    <div>
+      <a class="muted" href="https://drive.google.com/drive/folders/1jlRycl9ak3nuli0dwtEjf4hG1MA7YYfy" target="_blank">
+        View on Google Drive
+      </a>
+    </div>
+  </div>
+
+  <div class="proj" data-category="banners">
+    <div>
+      <i class="fas fa-image"></i>
+      <strong>Social Media Graphics</strong>
+      <div class="muted">Campaign assets for launches</div>
+    </div>
+    <div>
+      <a class="muted" href="https://drive.google.com/drive/folders/15KM7mD1TeQaHfTI0gcUra2oEmJR2Zyrh" target="_blank">
+        View on Google Drive
+      </a>
+    </div>
+  </div>
+
+  <div class="proj" data-category="apparel">
+    <div>
+      <i class="fas fa-tshirt"></i>
+      <strong>T-Shirt & Co-ord Designs</strong>
+      <div class="muted">Print-ready apparel collections</div>
+    </div>
+    <div>
+      <a class="muted" href="https://drive.google.com" target="_blank">
+        View on Google Drive
+      </a>
+    </div>
+  </div>
+
+  <div class="proj" data-category="video">
+    <div>
+      <i class="fas fa-video"></i>
+      <strong>Video Edits</strong>
+      <div class="muted">Promotional and social videos</div>
+    </div>
+    <div>
+      <a class="muted" href="https://drive.google.com/drive/folders/1yCp5Mi3CZeFgs8J87RWEc-oG-TPBdUUp" target="_blank">
+        View on Google Drive
+      </a>
+    </div>
+  </div>
+
+  <div class="proj" data-category="logo">
+    <div>
+      <i class="fas fa-pen-nib"></i>
+      <strong>All Others</strong>
+      <div class="muted">Banners · Printed collateral</div>
+    </div>
+    <div>
+      <a class="muted" href="https://drive.google.com/drive/folders/1NcEimDBAacimh-9M5q4bHBpin6CiDebf" target="_blank">
+        View on Google Drive
+      </a>
+    </div>
+  </div>
+</div>
+
+</section>
+
+      <div class="divider"></div>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p class="muted">For freelance work or full-time opportunities, feel free to contact me any time.</p>
+        <p><strong>Email:</strong> <a href="mailto:sk5254915@gmail.com">sk5254915@gmail.com</a></p>
+        <p><strong>Phone:</strong> +91-9872151899</p>
+      </section>
+
+      <footer>
+        © 2025 Subhash Kumar 
+      </footer>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav">
+    <div class="nav-items">
+      <a href="#about" class="nav-item active">
+        <i class="fas fa-user"></i>
+        <span>About</span>
+      </a>
+      <a href="#skills" class="nav-item">
+        <i class="fas fa-code"></i>
+        <span>Skills</span>
+      </a>
+      <a href="#experience" class="nav-item">
+        <i class="fas fa-briefcase"></i>
+        <span>Experience</span>
+      </a>
+      <a href="#projects" class="nav-item">
+        <i class="fas fa-folder"></i>
+        <span>Projects</span>
+      </a>
+      <a href="#contact" class="nav-item">
+        <i class="fas fa-envelope"></i>
+        <span>Contact</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Back to top button -->
+  <a href="#" class="back-to-top">
+    <i class="fas fa-chevron-up"></i>
+  </a>
+
+  <script>
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // Check for saved theme preference or default to light
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    updateThemeIcon(currentTheme);
+    
+    function updateThemeIcon(theme) {
+      if (theme === 'light') {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      } else {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+      }
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    });
+
+    // Simple filter logic for projects
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projects = document.querySelectorAll('.proj');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Active button highlight
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+
+        // Show/Hide projects
+        projects.forEach(project => {
+          if (filter === 'all') {
+            project.style.display = 'flex';
+          } else {
+            project.style.display = (project.dataset.category === filter) ? 'flex' : 'none';
+          }
+        });
+      });
+    });
+
+    // Back to top functionality
+    const backToTopButton = document.querySelector('.back-to-top');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    });
+
+    backToTopButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Mobile navigation highlighting
+    const sections = document.querySelectorAll('section');
+    const navItems = document.querySelectorAll('.nav-item');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (scrollY >= (sectionTop - 200)) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === `#${current}`) {
+          item.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
